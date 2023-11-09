@@ -27,7 +27,7 @@ app.layout = html.Div([
 
     html.Div(className='row', children=[
         html.Div(className='six columns', children=[
-            dash_table.DataTable(data=df.to_dict('records'), page_size=11, style_table={'overflowX': 'auto'}, style_cell={'align-items': 'center'})
+            dash_table.DataTable(data=dataset.df.to_dict('records'), page_size=11, style_table={'overflowX': 'auto'}, style_cell={'align-items': 'center'})
         ]),
 
         html.Div(className='six columns', children=[
@@ -58,7 +58,7 @@ app.layout = html.Div([
     Input(component_id='my-radio-buttons-final', component_property='value')
 )
 def update_graph(col_chosen):
-    fig = px.histogram(df, x='date', y=col_chosen, histfunc='sum')
+    fig = px.histogram(dataset.df, x='date', y=col_chosen, histfunc='sum')
     return fig
 
 # Run the app
